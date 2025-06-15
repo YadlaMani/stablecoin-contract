@@ -1,0 +1,30 @@
+[toolchain]
+package_manager = "yarn"
+
+[features]
+resolution = true
+skip-lint = false
+
+[programs.localnet]
+contract = "8FdSiHdm2Tk5VRoYmk2THpb7STv25rBW5LGTM894P8Cd"
+
+[registry]
+url = "https://api.apr.dev"
+
+[provider]
+cluster = "localnet"
+wallet = "~/.config/solana/id.json"
+
+[scripts]
+test = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 tests/**/*.ts"
+[test]
+startup_wait=50000
+shutdown_wait=5000
+upgradable=false
+[test.validator]
+bind_address="0.0.0.0"
+url="http://api.mainnet-beta.solana.com"
+ledger=".anchor/test-validator"
+rpc_port=8899
+[[test.validator.clone]]
+address="7UVimffxr9ow1uXYxsr4LHAcV58mLzhmwaeKvJ1pjLiE"
